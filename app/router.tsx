@@ -7,7 +7,7 @@ export function createRouter() {
     routeTree,
     scrollRestoration: true,
   });
-
+  console.log(`router createRouter:`);
   return router;
 }
 

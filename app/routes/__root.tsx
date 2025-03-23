@@ -5,6 +5,7 @@ import {
   createRootRoute,
   HeadContent,
   Scripts,
+  Link,
 } from "@tanstack/react-router";
 
 export const Route = createRootRoute({
@@ -26,6 +27,8 @@ export const Route = createRootRoute({
 });
 
 function RootComponent() {
+  console.log(`__root: RootComponent`);
+
   return (
     <RootDocument>
       <Outlet />
@@ -34,12 +37,14 @@ function RootComponent() {
 }
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
+  console.log(`__root: RootDocument`);
   return (
     <html>
       <head>
         <HeadContent />
       </head>
       <body>
+        <Link to="/posts">posts</Link>
         {children}
         <Scripts />
       </body>
