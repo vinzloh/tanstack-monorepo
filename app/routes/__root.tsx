@@ -1,25 +1,28 @@
 // app/routes/__root.tsx
-import type { ReactNode } from "react";
 import {
-  Outlet,
   createRootRoute,
   HeadContent,
-  Scripts,
   Link,
-} from "@tanstack/react-router";
+  Outlet,
+  Scripts,
+} from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import type { ReactNode } from 'react';
+
+import '@/app/app.css';
 
 export const Route = createRootRoute({
   head: () => ({
     meta: [
       {
-        charSet: "utf-8",
+        charSet: 'utf-8',
       },
       {
-        name: "viewport",
-        content: "width=device-width, initial-scale=1",
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1',
       },
       {
-        title: "TanStack Start Starter",
+        title: 'TanStack Start Starter',
       },
     ],
   }),
@@ -32,6 +35,7 @@ function RootComponent() {
   return (
     <RootDocument>
       <Outlet />
+      <TanStackRouterDevtools />
     </RootDocument>
   );
 }
@@ -44,7 +48,10 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
         <HeadContent />
       </head>
       <body>
-        <Link to="/posts">posts</Link>
+        <div className="flex gap-2">
+          <Link to="/posts">posts</Link>
+          <Link to="/app">app</Link>
+        </div>
         {children}
         <Scripts />
       </body>
